@@ -21,6 +21,8 @@ include $(BUILD_PREBUILT)
 
 
 include $(CLEAR_VARS)
+
+# Common C flags
 LOCAL_SRC_FILES := jni/src/pppoe.c \
                    jni/src/if.c \
                    jni/src/debug.c \
@@ -31,7 +33,8 @@ LOCAL_C_INCLUDES := $(KERNEL_HEADERS)
 LOCAL_SHARED_LIBRARIES := libcutils
 LOCAL_MODULE = pppoe
 LOCAL_MODULE_TAGS := optional
-LOCAL_CFLAGS := -DVERSION=$(PPPOE_VERSION)
+LOCAL_CFLAGS := -DANDROID_CHANGES
+LOCAL_CFLAGS += -Werror -fno-strict-aliasing
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
@@ -53,6 +56,7 @@ LOCAL_SRC_FILES:= jni/src/pppoe_cli.c \
 
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := pcli
+LOCAL_CFLAGS := -Werror -fno-strict-aliasing
 LOCAL_SHARED_LIBRARIES := libcutils libnetutils 
 include $(BUILD_EXECUTABLE)
 
@@ -67,7 +71,7 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/include
 
 LOCAL_CFLAGS := -DANDROID_CHANGES
-
+LOCAL_CFLAGS += -Werror -fno-strict-aliasing
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= pppoe_wrapper
 
