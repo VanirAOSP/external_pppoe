@@ -34,7 +34,7 @@ LOCAL_SHARED_LIBRARIES := libcutils
 LOCAL_MODULE = pppoe
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS := -DANDROID_CHANGES
-LOCAL_CFLAGS += -Werror -fno-strict-aliasing
+LOCAL_CFLAGS += -Werror -Wno-attributes -fno-strict-aliasing
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
